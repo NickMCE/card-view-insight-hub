@@ -77,7 +77,7 @@ const EmployeePage = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link to="/">
+          <Link to="/dashboard">
             <Button variant="ghost" className="pl-0">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Dashboard

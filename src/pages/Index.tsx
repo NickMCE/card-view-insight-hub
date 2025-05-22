@@ -1,11 +1,13 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const EmployeeDashboard = () => {
+  const navigate = useNavigate();
+  
   // Sample employee data
   const [employees, setEmployees] = useState([
     { id: "emp001", name: "John Wesley", department: "Engineering", role: "Senior Developer" },
