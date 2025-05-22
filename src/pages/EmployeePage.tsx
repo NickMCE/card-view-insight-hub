@@ -74,8 +74,19 @@ const EmployeePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen relative bg-gray-50">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center z-0 opacity-40" 
+        style={{ 
+          backgroundImage: `url('/lovable-uploads/96dce0b0-23fd-43da-ada6-e6dc94fd1f8a.png')`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain"
+        }}
+      />
+
+      <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="mb-6">
           <Link to="/dashboard">
             <Button variant="ghost" className="pl-0">
@@ -87,7 +98,7 @@ const EmployeePage = () => {
 
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-1/4">
-            <Card>
+            <Card className="bg-white/90">
               <CardHeader>
                 <CardTitle className="text-xl">{employee.name}</CardTitle>
               </CardHeader>
@@ -102,7 +113,7 @@ const EmployeePage = () => {
           </div>
 
           <div className="w-full lg:w-3/4 space-y-6">
-            <Card>
+            <Card className="bg-white/90">
               <CardHeader>
                 <CardTitle>Mood Tracker</CardTitle>
               </CardHeader>
@@ -120,7 +131,7 @@ const EmployeePage = () => {
             </Card>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
+              <Card className="bg-white/90">
                 <CardHeader className="bg-[#9b87f5]/10 rounded-t-lg">
                   <CardTitle>Recommended Activities</CardTitle>
                 </CardHeader>
@@ -133,7 +144,7 @@ const EmployeePage = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-white/90">
                 <CardHeader className="bg-[#9b87f5]/10 rounded-t-lg">
                   <CardTitle>Personality Summary</CardTitle>
                 </CardHeader>

@@ -31,7 +31,7 @@ const EmployeeDashboard = () => {
     <div className="min-h-screen relative">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center z-0 opacity-15" 
+        className="absolute inset-0 bg-cover bg-center z-0 opacity-60" 
         style={{ 
           backgroundImage: `url('/lovable-uploads/d64ad323-9208-4c30-9d2e-9e79cfca104f.png')`,
           backgroundPosition: "center",
