@@ -4,20 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { toast } from "@/components/ui/sonner";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [institution, setInstitution] = useState("");
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { toast: shadowToast } = useToast();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
     // Simple validation
     if (!email || !password || !institution) {
-      toast({
+      shadowToast({
         variant: "destructive",
         title: "Error",
         description: "Please fill in all fields",
@@ -25,29 +26,36 @@ const LoginPage = () => {
       return;
     }
     
-    // In a real app, you would authenticate with a backend here
-    // For now, we'll just redirect to the dashboard
-    toast({
-      title: "Login successful",
-      description: "Welcome to the Employee Dashboard",
-    });
-    
-    navigate("/");
+    // Check for specific admin credentials
+    if (email === "test@example.com" && password === "password1234" && institution === "MCE") {
+      toast.success("Login successful! Welcome to the Employee Dashboard");
+      navigate("/dashboard");
+    } else {
+      shadowToast({
+        variant: "destructive",
+        title: "Authentication Failed",
+        description: "Invalid credentials. Please try again.",
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#7DD1BC]">
-      <div className="w-full max-w-md px-4">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center z-0" 
+        style={{ 
+          backgroundColor: "#7DD1BC",
+          backgroundImage: `url('/lovable-uploads/d710786d-6688-4e9a-9edc-38954edd8423.png')`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain"
+        }}
+      />
+
+      <div className="w-full max-w-md px-4 z-10">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-black mb-2">welcome, Admin!</h1>
-        </div>
-        
-        <div className="flex justify-center mb-8">
-          <img
-            src="/fox.png"
-            alt="Fox Illustration"
-            className="h-48 object-contain"
-          />
         </div>
         
         <form onSubmit={handleLogin} className="space-y-4">
